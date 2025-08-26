@@ -1,0 +1,19 @@
+#[derive(Debug, Clone)]
+pub enum Expr {
+    Number(f64),
+    Bool(bool),
+    Var(String),
+    Binary(Box<Expr>, String, Box<Expr>),
+    Call(String, Vec<Expr>),
+    Block(Vec<Stmt>),
+}
+
+#[derive(Debug, Clone)]
+pub enum Stmt {
+    Expr(Expr),
+    Let(String, Expr),
+    Print(Expr),
+    If(Expr, Vec<Stmt>, Vec<Stmt>),
+    Func(String, Vec<String>, Vec<Stmt>),
+    Return(Expr),
+}
