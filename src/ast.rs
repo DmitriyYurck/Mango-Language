@@ -1,6 +1,7 @@
 #[derive(Debug, Clone)]
 pub enum Expr {
     Number(f64),
+    String(String),
     Bool(bool),
     Var(String),
     Binary(Box<Expr>, String, Box<Expr>),

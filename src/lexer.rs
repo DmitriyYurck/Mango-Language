@@ -5,6 +5,7 @@ pub enum Token {
     Ident(String),
     Keyword(String),
     Symbol(char),
+    String(String),
     EOF,
 }
 
@@ -44,6 +45,20 @@ pub fn tokenize(input: &str) -> Vec<Token> {
                 tokens.push(Token::Symbol(c));
                 chars.next();
             },
+            '"' => {
+                 chars.next(); // skip opening quote
+                 let mut string = String::new();
+                  while let Some(&ch) = chars.peek() {
+                     if ch == '"' {
+                         chars.next(); // skip closing quote
+                         break;
+                     } else {
+                         string.push(ch);
+                         chars.next();
+                     }
+                 }
+                 tokens.push(Token::String(string));
+             }
             _ => { chars.next(); },
         }
     }

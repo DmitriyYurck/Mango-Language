@@ -18,9 +18,12 @@ fn eval_stmt(stmt: &Stmt, env: &mut Env) -> Value {
             val
         }
         Stmt::Print(expr) => {
-            let val = eval_expr(expr, env);
-            println!("{:?}", val);
-            Value::None
+             let val = eval_expr(expr, env);
+             match val {
+                 Value::String(s) => println!("{}", s),
+                 other => println!("{:?}", other),
+             }
+             Value::None
         }
         Stmt::If(cond, then_branch, else_branch) => {
             let cond_val = eval_expr(cond, env);
@@ -81,6 +84,7 @@ fn eval_expr(expr: &Expr, env: &mut Env) -> Value {
                 panic!("{} is not a function", name);
             }
         }
+        Expr::String(s) => Value::String(s.clone()),
         Expr::Block(stmts) => {
             let mut local_env = Env::default();
             eval(stmts, &mut local_env)

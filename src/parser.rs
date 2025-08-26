@@ -140,6 +140,7 @@ impl Parser {
                 let block = self.parse_block();
                 Expr::Block(block)
             }
+            Token::String(s) => Expr::String(s.clone()),
             Token::Ident(name) => {
                 if self.peek() == &Token::Symbol('(') {
                     self.next();
