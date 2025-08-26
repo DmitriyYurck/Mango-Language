@@ -8,7 +8,7 @@ Mango is a minimalist interpreted programming language designed to explore inter
 
 Пример кода / Example Code
 
-`mango
+```mango
 let a = 10;
 let b = 5;
 let sum = a + b
@@ -26,7 +26,7 @@ func multiply(x, y) {
 
 let result = multiply(3, 4);
 print result;
-`
+```
 
 ---
 
@@ -38,7 +38,7 @@ print result;
 
 Инструкция / Steps
 
-`bash
+```bash
 
 Клонируйте репозиторий
 git clone https://github.com/DmitriyYurck/Mango-Language.git
@@ -49,18 +49,18 @@ cargo build --release
 
 Запуск скрипта
 cargo run -- examples/demo.mgo
-`
+```
 
 Альтернативный запуск:
-`bash
+```bash
 ./target/release/mango examples/demo.mgo
-`
+```
 
 ---
 
 Структура проекта / Project Structure
 
-`text
+```text
 Mango-Language/
 ├── src/
 │   ├── main.rs          // Точка входа
@@ -73,13 +73,13 @@ Mango-Language/
 │   └── demo.mgo         // Пример скрипта
 ├── Cargo.toml           // Конфигурация Cargo
 └── README.md            // Документация
-`
+```
 
 ---
 
 Архитектура исполнения / Execution Pipeline
 
-`text
+```text
 ┌────────────┐
 │  .mgo файл │
 └────┬───────┘
@@ -103,18 +103,18 @@ Mango-Language/
 ┌────────────┐
 │ Environment│  → переменные и область видимости
 └────────────┘
-`
+```
 
 ---
 
 Вывод интерпретатора / Sample Output
 
-`bash
+```bash
 $ cargo run -- examples/demo.mgo
 15
 Sum is small
 12
-`
+```
 
 ---
 
